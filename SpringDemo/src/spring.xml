@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+<!--	<bean id="triangle" class="org.himansi.springexample.Triangle">
+		<property name="type" value="Equilateral"></property>  < preset value for this type variable & it is kind of dependency injection ,being injected by setter ,using setter in order to initialize value  > 
+	</bean> -->
+	
+	<bean id="trianglebyconstruct" class="org.himansi.springexample.Triangle">
+		<constructor-arg type="java.lang.String" index="0" value="Equilateral"/>  <!-- preset value for this type variable & it is kind of dependency injection ,being injected by constructor ,using constructor instead of setter in order to initialize value  --> 
+		<constructor-arg type="int" index="1" value="10"/>
+	</bean>
+	
+	
+	<bean id="square" class="org.himansi.springexample.Square" >
+		<property name="p1" ref="point1"/><!-- ref tag can point to  name , id ,alias -->
+	
+		<property name="p2" ref="point2"/>
+		
+		<property name="p3">
+			<bean class="org.himansi.springexample.Point"> <!-- this bean not accessible by other object -->
+				<property name="x" value="1"/>
+				<property name="y" value="1"/>
+			</bean>
+		</property>
+		<property name="p4">
+			<bean class="org.himansi.springexample.Point">
+				<property name="x" value="1"/>
+				<property name="y" value="0"/>
+			</bean>
+		</property>
+	</bean>
+	
+	
+	<bean id="point1" class="org.himansi.springexample.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+	<bean id="point2" class="org.himansi.springexample.Point" name="point2-alias">
+		<property name="x" value="0"/>
+		<property name="y" value="1"/>
+	</bean>
+	
+	<alias name="point2" alias="point2-alias"/>
+	
+	
+	
+</beans>
