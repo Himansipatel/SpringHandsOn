@@ -44,6 +44,29 @@
 	
 	<alias name="point2" alias="point2-alias"/>
 	
+	<bean id="triangleCollection" class="org.himansi.springexample.TriangleCollection">
+		<property name="points">
+			<list>								<!-- set list value by using bean reference #ref  ex : set map-->
+				<ref bean="tcpoint1"/>
+				<ref bean="tcpoint2"/>
+				<ref bean="tcpoint3"/>
+			</list>
+		</property>	
+	</bean>
 	
+	<bean id="tcpoint1" class="org.himansi.springexample.Point">
+		<property name="x" value="10"/>
+		<property name="y" value="10"/>
+	</bean>
 	
+	<bean id="tcpoint2" class="org.himansi.springexample.Point">
+		<property name="x" value="05"/>
+		<property name="y" value="15"/>
+	</bean>
+	
+	<bean id="tcpoint3" class="org.himansi.springexample.Point">
+		<property name="x" value="40"/>
+		<property name="y" value="15"/>
+	</bean>
+	<!-- names of bean match names of member variable as a dependency - autowiring ex: autowire="byName" or "byType" or "constructor" but it depends on member variable in class  and default is autowire off -->
 </beans>
