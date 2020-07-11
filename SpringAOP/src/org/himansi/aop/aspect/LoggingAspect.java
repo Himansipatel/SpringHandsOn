@@ -1,5 +1,6 @@
 package org.himansi.aop.aspect;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -28,8 +29,18 @@ public class LoggingAspect {
 
 	@Before("allGetters()")
 	public void secondAdvice() {
-
 		System.out.println("Second advice executed");
+	}
+
+	/*
+	 * Joinpoint - To get the info about what was the method that actually triggered
+	 * the call
+	 */
+	@Before("allCircleMethods()")
+	public void methodNameAdvice(JoinPoint joinpoint) {
+
+		System.out.println(joinpoint.toString());
+		System.out.println(joinpoint.getTarget());//gives the object whose method was called and the method triggered this//here itgives circle obj
 	}
 
 	/*
