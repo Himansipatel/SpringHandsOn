@@ -117,9 +117,9 @@ public class LoggingAspect {
 					"After advice (can write some code here that needs to be executed after target method runs)");
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("After throwing an exception !..");
 		}
-
+		System.out.println("After Finally !..");
 		return returnValue;
 	}
 
