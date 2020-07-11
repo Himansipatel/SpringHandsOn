@@ -11,7 +11,7 @@ public class Circle {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public int cetReturn(int a) {
 		this.a = a;
 		return a;
