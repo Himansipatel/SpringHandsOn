@@ -17,8 +17,8 @@ public class LoggingAspect {
 	 * execution of "public String getName()"
 	 */
 	@Before("methodsAcceptingEntities()")
-	public void methodParaAdvise() {
-		System.out.println("It executes when method with any parameter is circle ");
+	public void CircleArgumentMethod() {
+		System.out.println("A method that takes circle parameter has been called ");
 	}
 
 	// this only applicable when this both pointcuts apply
@@ -40,7 +40,17 @@ public class LoggingAspect {
 	public void methodNameAdvice(JoinPoint joinpoint) {
 
 		System.out.println(joinpoint.toString());
-		System.out.println(joinpoint.getTarget());//gives the object whose method was called and the method triggered this//here itgives circle obj
+		System.out.println(joinpoint.getTarget());// gives the object whose method was called and the method triggered
+													// this//here it gives circle obj
+	}
+
+	/*
+	 * can get the value of passed parameter of method that actually triggered apply
+	 * some preprocessing before actual method runs
+	 */
+	@Before("args(name)")
+	public void StringArgumentMethod(String name) {
+		System.out.println("A method that takes circle parameter has been called is " + name);
 	}
 
 	/*

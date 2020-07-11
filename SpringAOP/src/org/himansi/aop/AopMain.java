@@ -13,8 +13,10 @@ public class AopMain {
 		ShapeService shapeService = context.getBean("shapeService", ShapeService.class);
 		System.out.println(shapeService.getCircle().getName());
 //		System.out.println(shapeService.getTriangle().getName());
+		shapeService.getCircle().setName("Dummy Name");
 		Circle circle = shapeService.getCircle();
 		shapeService.setCircle(circle);
+
 	}
 
 }
