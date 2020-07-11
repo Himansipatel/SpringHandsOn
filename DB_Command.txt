@@ -1,0 +1,9 @@
+connect 'jdbc:derby://localhost:1527/db;create=true';
+
+CREATE TABLE circle(id integer,name char(50));
+
+select * from circle;
+
+insert into circle values(1,'First circle');
+
+exit;
