@@ -135,15 +135,15 @@ public class LoggingAspect {
 
 		try {
 			System.out.println(
-					"Before advice (can write some code here that needs to be executed before target method runs)");
+					"loggable : Before advice (can write some code here that needs to be executed before target method runs)");
 			proceedingJoinPoint.proceed();
 			System.out.println(
-					"After advice (can write some code here that needs to be executed after target method runs)");
+					"loggable : After advice (can write some code here that needs to be executed after target method runs)");
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
-			System.out.println("After throwing an exception !..");
+			System.out.println("loggable : After throwing an exception !..");
 		}
-		System.out.println("After Finally !..");
+		System.out.println("loggable : After Finally !..");
 		return returnValue;
 	}
 

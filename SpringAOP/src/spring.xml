@@ -24,5 +24,22 @@
 <bean name="shapeService" class="org.himansi.aop.service.ShapeService" autowire="byName" />
 
 <bean name="loggingAspect" class="org.himansi.aop.aspect.LoggingAspect" />
+
+<bean name="loggingXMLAspect" class="org.himansi.aop.aspect.LoggingXMLAspect"  />
+
+
+
+<aop:config>
+
+	<aop:aspect id="loggingXMLAspect" ref="loggingXMLAspect">
+		<aop:pointcut expression="execution(* get*())" id="allGetters"/>
+		<aop:around method="annotationAroundAdvice" pointcut-ref="allGetters"/> <!-- <aop:around method="annotationAroundAdvice" pointcut="execution(* get*())"/> -->
+		<aop:pointcut expression="@annotation(org.himansi.aop.aspect.Loggable)" id="loggable"/>
+		<aop:around method="onLoggable" pointcut-ref="loggable"/>
+		
+	</aop:aspect>
+
+</aop:config>
+
 	
 </beans>
