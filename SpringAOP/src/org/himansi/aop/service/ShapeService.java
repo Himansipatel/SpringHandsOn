@@ -5,7 +5,7 @@ import org.himansi.aop.model.Triangle;
 
 public class ShapeService {
 	private Circle circle;
-	private Triangle triangle;
+//	private Triangle triangle;
 
 	public Circle getCircle() {
 		return circle;
@@ -15,11 +15,11 @@ public class ShapeService {
 		this.circle = circle;
 	}
 
-	public Triangle getTriangle() {
-		return triangle;
-	}
-
-	public void setTriangle(Triangle triangle) {
-		this.triangle = triangle;
-	}
+//	public Triangle getTriangle() {
+//		return triangle;
+//	}
+//
+//	public void setTriangle(Triangle triangle) {
+//		this.triangle = triangle;
+//	}
 }

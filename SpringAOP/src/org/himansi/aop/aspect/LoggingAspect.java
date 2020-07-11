@@ -1,6 +1,9 @@
 package org.himansi.aop.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -50,9 +53,47 @@ public class LoggingAspect {
 	 */
 	@Before("args(name)")
 	public void StringArgumentMethod(String name) {
-		System.out.println("A method that takes circle parameter has been called is " + name);
+		System.out.println("A method that takes string parameter has been called is " + name);
 	}
+	
+	
+	/*
+	 * @After - It executes after calling method executed no matter method has successfully executed or not
+	 * @AfterReturning - it works to run only when method completes successfully without throwing any exception 
+	 */
+	@After("args(name)")
+	public void StringArgumentMethodAfter(String name) {
+		System.out.println("A method that takes string parameter has been called is " + name);
+	}
+	
+	/*
+	 * @AfterReturning - it works to run only when method completes successfully without throwing any exception and returns
+	 * here method get both method passing parameter and return value
+	 */
+	@AfterReturning(pointcut = "within(org.himansi.aop.model.Circle)",returning = "returnValue")
+	public void StringArgumentMethodAfterReturning(int returnValue) {
+		System.out.println("A method that takes string parameter has been called  return value is : "+returnValue);
+	
+	}
+	
+	
+//	@AfterReturning(pointcut="org.himansi.aop.model.Circle.cetReturn() && args()" , returning = "abc")
+//	public void StringArgumentMethodAfterReturning(int a,int abc) {
+////		System.out.println("A method that takes string parameter has been called is : " + name + " and return value is : "+abc);
+//	}
+	
+	
+	
 
+
+	/*
+	 * @AfterReturning - it works to run only when method throwing any exception and its type is RuntimeException only
+	 */
+	@AfterThrowing(pointcut = "args(name)",throwing = "ex")
+	public void exceptionAdvice(String name,RuntimeException ex) {
+		System.out.println("An exception has been thrown"+ex);
+	}
+	
 	/*
 	 * ->can use one pointcut applies to different method ->ponintcut defines dummy
 	 * method to hold an expression "execution(* get*())" so that we can replace it
