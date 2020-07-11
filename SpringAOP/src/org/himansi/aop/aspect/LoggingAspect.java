@@ -124,6 +124,30 @@ public class LoggingAspect {
 	}
 
 	/*
+	 * Custom annotation - it is very helpful in case of this advice applies to many
+	 * methods(easy to add unpredictable method later).It's more readable way to do
+	 * that.
+	 */
+	@Around("@annotation(org.himansi.aop.aspect.Loggable)")
+	public Object customAnnotationAroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
+
+		Object returnValue = null;
+
+		try {
+			System.out.println(
+					"Before advice (can write some code here that needs to be executed before target method runs)");
+			proceedingJoinPoint.proceed();
+			System.out.println(
+					"After advice (can write some code here that needs to be executed after target method runs)");
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			System.out.println("After throwing an exception !..");
+		}
+		System.out.println("After Finally !..");
+		return returnValue;
+	}
+
+	/*
 	 * ->can use one pointcut applies to different method ->ponintcut defines dummy
 	 * method to hold an expression "execution(* get*())" so that we can replace it
 	 * by "allGetters()" for ex -@Before("allGetters()")

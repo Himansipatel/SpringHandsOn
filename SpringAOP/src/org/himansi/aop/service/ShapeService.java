@@ -1,12 +1,14 @@
 package org.himansi.aop.service;
 
+import org.himansi.aop.aspect.Loggable;
 import org.himansi.aop.model.Circle;
 import org.himansi.aop.model.Triangle;
 
 public class ShapeService {
 	private Circle circle;
 	private Triangle triangle;
-
+	
+	@Loggable
 	public Circle getCircle() {
 		return circle;
 	}
