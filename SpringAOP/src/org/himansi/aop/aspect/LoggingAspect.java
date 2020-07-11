@@ -16,15 +16,21 @@ public class LoggingAspect {
 	 * execution of "public String getName()"
 	 */
 	@Before("methodsAcceptingEntities()")
+	public void methodParaAdvise() {
+		System.out.println("It executes when method with any parameter is circle ");
+	}
+
+	// this only applicable when this both pointcuts apply
+	@Before("allGetters() && allCircleMethods()")
 	public void LoggingAdvice() { // standard format to write an advice
 		System.out.println("Advice run . Get method is called");
 	}
 
-//	@Before("allGetters()")
-//	public void secondAdvice() {
-//
-//		System.out.println("Second advice executed");
-//	}
+	@Before("allGetters()")
+	public void secondAdvice() {
+
+		System.out.println("Second advice executed");
+	}
 
 	/*
 	 * ->can use one pointcut applies to different method ->ponintcut defines dummy
@@ -54,7 +60,7 @@ public class LoggingAspect {
 	@Pointcut("args(org.himansi.aop.model.Circle)")
 	public void methodsAcceptingEntities() {
 	}
-	
+
 	/*
 	 * @Before("execution(public String getName())") // "LoggingAdvice()" run before
 	 * the execution of "public String // getName()" public void LoggingAdvice() {
